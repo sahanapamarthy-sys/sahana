@@ -53,13 +53,27 @@ def counting_vowels_and_consonants(string_input):
                 consonant_count += 1 
     return (vowel_count, consonant_count)
 
-def average_vowels_and_consanants(paragraph_insert):
-    paragraph_insert =paragraph_insert.replace("!",".")
-    paragraph_insert = paragraph_insert.replace("?",".")
-    sentances = paragraph_insert.split(".")
-    num_sentances = len(sentances)
-    for i in range (num_sentances): 
-        counting_vowels_and_consonants(sentances)
-        return num_sentances
+print(counting_vowels_and_consonants(string_input = paragraph))
+
+def average_vowels_and_consonants(paragraph_insert):
+    paragraph_insert = paragraph_insert.replace("!", ".")
+    paragraph_insert = paragraph_insert.replace("?", ".")
+    sentences = paragraph_insert.split(".")
+    sentences = [s.strip() for s in sentences if s.strip() != ""]  # remove all the empty strings
+    num_sentences = len(sentences)
+    total_vowels = 0
+    total_consonants = 0
+    for sentence in sentences:
+        vowels, consonants = counting_vowels_and_consonants(sentence)
+        total_vowels += vowels
+        total_consonants += consonants
+    average_vowels = total_vowels / num_sentences
+    average_consonants = total_consonants / num_sentences
+    return (num_sentences, average_vowels, average_consonants)
+num, avg_v, avg_c = average_vowels_and_consonants(paragraph)
+
+print(f"There are {num} sentences in the paragraph.")
+print(f"The average number of vowels per sentence is {avg_v:.2f}.")
+print(f"The average number of consonants per sentence is {avg_c:.2f}.")
 
 
