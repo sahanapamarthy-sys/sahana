@@ -81,6 +81,13 @@ def max_while(num):
     
     return largest
 
+def sum_of_digits(n):
+    total = 0
+    for digit in str(n):
+        total += int(digit)
+        
+    return total
+
 #my favorite code 
 def hacked_computer(x,y): 
     value = 1 
